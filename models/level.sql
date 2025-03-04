@@ -3,10 +3,13 @@ WITH cleaned_data AS (
 )
 SELECT
     flight_id,
-    origin_country,
     callsign,
+    squawk,
+    origin_country,
     departure_time,
+    velocity,
+    baro_altitude,
     vertical_rate,
-    'Neutral' AS flight_status
+    'Level' AS flight_status
 FROM cleaned_data
 WHERE ABS(vertical_rate) <= 0.1  -- Adjust threshold as needed

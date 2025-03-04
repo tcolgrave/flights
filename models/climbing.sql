@@ -3,9 +3,12 @@ WITH cleaned_data AS (
 )
 SELECT
     flight_id,
-    origin_country,
     callsign,
+    squawk,
+    origin_country,
     departure_time,
+    velocity,
+    baro_altitude,
     vertical_rate,
     'Climbing' AS flight_status
 FROM cleaned_data

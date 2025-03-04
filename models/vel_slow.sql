@@ -3,10 +3,13 @@ WITH cleaned_data AS (
 )
 SELECT
     flight_id,
-    origin_country,
     callsign,
+    squawk,
+    origin_country,
     departure_time,
     velocity,
+    baro_altitude,
+    vertical_rate,
     'Slow' AS flight_speed
 FROM cleaned_data
 WHERE velocity < 100
