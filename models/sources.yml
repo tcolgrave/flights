@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: flights_source
+    database: flights       # e.g., the name of your database
+    schema: public          # e.g., public or the schema that contains your raw data
+    tables:
+      - name: raw_flights   # replace with the actual name of your raw table
