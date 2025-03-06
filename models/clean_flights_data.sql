@@ -7,6 +7,7 @@ SELECT
     origin_country,
     callsign,
     squawk,
+    on_ground as on_ground_flag,     
     latitude,
     longitude,
     geo_altitude,

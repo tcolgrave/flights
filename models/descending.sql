@@ -1,6 +1,7 @@
 WITH cleaned_data AS (
     SELECT * FROM {{ ref('clean_flights_data') }}
 )
+
 SELECT
     flight_id,
     callsign,
