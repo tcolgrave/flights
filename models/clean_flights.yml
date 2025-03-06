@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: clean_flights
+    description: "This model processes raw flight data, filters out records with missing position data, and creates additional fields such as flight status, location, and other relevant flight information."
+    columns:
+      - name: capture_datetime
+        description: "The timestamp when the flight data was captured."
+      - name: flight_id
+        description: "The unique identifier for the flight, represented by icao24."
+      - name: origin_country
+        description: "The country from which the flight originated."
+      - name: callsign
+        description: "The callsign of the aircraft."
+      - name: squawk
+        description: "The transponder code transmitted by the aircraft."
+      - name: on_ground_flag
+        description: "Indicates whether the aircraft is on the ground."
+      - name: latitude
+        description: "The latitude position of the aircraft at the time of capture."
+      - name: longitude
+        description: "The longitude position of the aircraft at the time of capture."
+      - name: geo_altitude
+        description: "The altitude of the aircraft based on GPS data."
+      - name: baro_altitude
+        description: "The altitude of the aircraft based on barometric pressure."
+      - name: vertical_rate
+        description: "The rate of climb or descent of the aircraft."
+      - name: true_track
+        description: "The aircraft's true heading."
+      - name: velocity
+        description: "The speed of the aircraft."
+      - name: departure_time
+        description: "The time at which the flight's position was recorded (departure time)."
+      - name: arrival_time
+        description: "The time at which the flight's last contact was recorded (arrival time)."
+      - name: status
+        description: "Flight status, either 'Scheduled' or 'Unknown', based on the presence of departure time."
