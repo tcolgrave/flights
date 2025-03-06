@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: clean_flights
+  - name: clean_flights  # Ensure this matches the name of the .sql file (clean_flights.sql)
     description: "This model processes raw flight data, filters out records with missing position data, and creates additional fields such as flight status, location, and other relevant flight information."
     columns:
       - name: capture_datetime

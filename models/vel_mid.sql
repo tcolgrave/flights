@@ -1,5 +1,5 @@
 WITH cleaned_data AS (
-    SELECT * FROM {{ ref('clean_flights_data') }}
+    SELECT * FROM {{ ref('clean_flights') }}
 )
 SELECT
     flight_id,
