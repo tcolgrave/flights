@@ -23,3 +23,4 @@ SELECT
     END AS status
 FROM raw_data
 WHERE time_position IS NOT NULL
+and icao24 is not null

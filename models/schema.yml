@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: clean_flights
+    description: "Cleans and transforms flight data"
+    columns:
+      - name: flight_id
+        description: "Unique flight identifier"
+      - name: departure_time
+        description: "Departure timestamp"
+      - name: arrival_time
+        description: "Arrival timestamp"
+      - name: origin_country
+        description: "Country of origin"
+    tests:
+      - not_null:
+          column_name: flight_id
+      - not_null:
+          column_name: origin_country
+      - not_null:
+          column_name: departure_time
+      - not_null:
+          column_name: arrival_time
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ["flight_id", "capture_datetime"]          
