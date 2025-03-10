@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}  -- Place this line at the very top of your SQL file
+
 WITH raw_data AS (
     SELECT * FROM {{ source('flights_source', 'raw_flights') }}
 )

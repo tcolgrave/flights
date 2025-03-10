@@ -3,6 +3,7 @@ version: 2
 models:
   - name: descending
     description: "This model filters cleaned flight data to identify flights that are currently descending."
+    materialized: table        
     columns:
       - name: flight_id
         description: "The unique identifier for the flight."
