@@ -6,6 +6,7 @@ WITH cleaned_data AS (
 
 SELECT
     flight_id,
+    capture_datetime,
     callsign,
     squawk,
     origin_country,
