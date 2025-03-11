@@ -1,0 +1,49 @@
+version: 2
+
+models:
+  - name: clean_flights
+    description: "Cleans and transforms raw flight data from flights_source.raw_flights."
+    columns:
+      - name: capture_datetime
+        description: "Timestamp of when the flight data was captured."
+      - name: flight_id
+        description: "Unique ICAO24 identifier for the aircraft."
+        tests:
+          - not_null
+      - name: origin_country
+        description: "Country of aircraft registration."
+        tests:
+          - not_null
+      - name: callsign
+        description: "Callsign of the aircraft."
+      - name: squawk
+        description: "Transponder squawk code."
+      - name: on_ground_flag
+        description: "Boolean flag indicating if the aircraft is on the ground."
+      - name: latitude
+        description: "Latitude of the aircraft's position."
+      - name: longitude
+        description: "Longitude of the aircraft's position."
+      - name: geo_altitude
+        description: "Geometric altitude of the aircraft."
+      - name: baro_altitude
+        description: "Barometric altitude of the aircraft."
+      - name: vertical_rate
+        description: "Vertical speed of the aircraft."
+      - name: true_track
+        description: "Aircraft's true track over ground."
+      - name: velocity
+        description: "Speed of the aircraft over ground."
+      - name: departure_time
+        description: "Time when the aircraft departed."
+        tests:
+          - not_null
+      - name: arrival_time
+        description: "Time when the aircraft last contacted ground control."
+        tests:
+          - not_null
+      - name: status
+        description: "Status of the flight, either 'Scheduled' or 'Unknown'."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ["flight_id", "capture_datetime"]

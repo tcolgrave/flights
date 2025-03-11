@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: level
+    description: "This model filters cleaned flight data to identify flights that are currently descending."
+    materialized: table        
+    columns:
+      - name: flight_id
+        description: "The unique identifier for the flight."
+      - name: callsign
+        description: "The callsign of the aircraft."
+      - name: squawk
+        description: "The transponder code."
+      - name: origin_country
+        description: "The country from which the flight originated."
+      - name: departure_time
+        description: "The time the flight departed."
+      - name: velocity
+        description: "The speed of the aircraft."
+      - name: baro_altitude
+        description: "The altitude of the aircraft based on barometric pressure."
+      - name: vertical_rate
+        description: "The rate of climb or descent of the aircraft."
+      - name: flight_status
+        description: "Status indicating the aircraft is flying level."
