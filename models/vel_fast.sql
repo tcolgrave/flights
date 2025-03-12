@@ -15,4 +15,4 @@ SELECT
     vertical_rate,
     'Fast' AS flight_speed
 FROM cleaned_data
-WHERE velocity > 500
+WHERE velocity > 250

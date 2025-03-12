@@ -15,4 +15,4 @@ SELECT
     vertical_rate,
     'Neutral' AS flight_speed
 FROM cleaned_data
-WHERE velocity BETWEEN 100 AND 500
+WHERE velocity BETWEEN 120 AND 250
