@@ -14,4 +14,4 @@ SELECT
     vertical_rate,
     'Level' AS flight_status
 FROM cleaned_data
-WHERE ABS(vertical_rate) <= 0.1  -- Adjust threshold as needed
+WHERE ABS(vertical_rate) <= 5  -- Adjust threshold as needed

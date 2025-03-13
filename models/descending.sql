@@ -15,4 +15,4 @@ SELECT
     vertical_rate,
     'Descending' AS flight_status
 FROM cleaned_data
-WHERE vertical_rate < 0
+WHERE vertical_rate < -5

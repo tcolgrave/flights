@@ -14,4 +14,4 @@ SELECT
     vertical_rate,
     'Climbing' AS flight_status
 FROM cleaned_data
-WHERE vertical_rate > 0
+WHERE vertical_rate > 5
