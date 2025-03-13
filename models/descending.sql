@@ -10,7 +10,6 @@ SELECT
     callsign,
     squawk,
     origin_country,
-    departure_time,
     velocity,
     baro_altitude,
     vertical_rate,

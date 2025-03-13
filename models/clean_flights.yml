@@ -34,16 +34,12 @@ models:
         description: "Aircraft's true track over ground."
       - name: velocity
         description: "Speed of the aircraft over ground."
-      - name: departure_time
-        description: "Time when the aircraft departed."
         tests:
           - not_null
       - name: arrival_time
         description: "Time when the aircraft last contacted ground control."
         tests:
           - not_null
-      - name: status
-        description: "Status of the flight, either 'Scheduled' or 'Unknown'."
     tests:
       - dbt_utils.unique_combination_of_columns:
           combination_of_columns: ["flight_id", "capture_datetime"]

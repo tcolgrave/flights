@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: gold_descend
+    description: "This model calculates the descent data of flights, determining vertical rates and filtering by time intervals."
+    columns:
+      - name: flight_id
+        description: "Unique ICAO24 identifier for the aircraft."
+        tests:
+          - not_null
+          - unique
+      - name: vertical_rate
+        description: "Vertical rate of the aircraft, indicating the rate of climb or descent."
+      - name: baro_alt
+        description: "Barometric altitude of the aircraft."
+      - name: velocity
+        description: "Speed of the aircraft over the ground."
+      - name: capture_datetime
+        description: "Timestamp when the data was captured."
+        tests:
+          - not_null
+      - name: time_diff
+        description: "Time difference between consecutive captures for the same flight."
+      - name: record_count
+        description: "Count of records for the same flight."
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+          combination_of_columns: ["flight_id", "capture_datetime"]

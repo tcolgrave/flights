@@ -17,12 +17,7 @@ SELECT
     vertical_rate,
     true_track,
     velocity,
-    time_position AS departure_time,
-    last_contact AS arrival_time,
-    CASE
-        WHEN time_position IS NULL THEN 'Unknown'
-        ELSE 'Scheduled'
-    END AS status
+    last_contact
 FROM raw_data
 WHERE time_position IS NOT NULL
 and icao24 is not null
