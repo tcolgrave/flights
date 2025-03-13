@@ -21,3 +21,4 @@ SELECT
 FROM raw_data
 WHERE time_position IS NOT NULL
 and icao24 is not null
+and not (on_ground is true and (velocity > 175 or vertical_rate != 0))
