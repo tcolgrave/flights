@@ -21,10 +21,11 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "target"
   - "dbt_packages"
 
-# Configuring models
 models:
   flights:  
-    +materialized: table  # Set all models to be materialized as tables
+    +materialized: table  # Default materialization  
+    clean_flights:
+      enabled: false  # Disable this model  
     
     # Pre-hook: Log the row count before execution
     +pre-hook: 

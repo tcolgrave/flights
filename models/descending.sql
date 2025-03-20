@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}  -- Place this line at the very top of your SQL file
 
 WITH cleaned_data AS (
-    SELECT * FROM {{ ref('clean_flights') }}
+    SELECT * FROM {{ ref('parto_clean') }}
 )
 
 SELECT

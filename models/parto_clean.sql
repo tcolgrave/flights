@@ -1,16 +1,15 @@
 {{ config(materialized='table') }}  -- This will create a table in the database
 
-WITH clean_flights AS (
-    SELECT * 
-    FROM {{ ref('clean_flights') }}  -- Referring to the clean_flights model
+WITH raw_data AS (
+    SELECT * FROM {{ source('flights_source', 'raw_flights') }}
 )
 SELECT
     capture_datetime,
-    flight_id,  
+    icao24 AS flight_id,  
     origin_country,
     callsign,
     squawk,
-    on_ground_flag,     
+    on_ground as on_ground_flag,    
     latitude,
     longitude,
     geo_altitude,
@@ -19,7 +18,7 @@ SELECT
     true_track,
     velocity,
     last_contact
-FROM clean_flights
-WHERE capture_datetime IS NOT NULL
-  AND flight_id IS NOT NULL
-  AND NOT (on_ground_flag IS TRUE AND (velocity > 175 OR vertical_rate != 0))
+FROM raw_data
+WHERE time_position IS NOT NULL
+and icao24 is not null
+and not (on_ground is true and (velocity > 175 or vertical_rate != 0))

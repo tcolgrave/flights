@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: gold_lev_slow
+    description: "Filters flights from level and vel_slow models based on time differences and velocity."
+    columns:
+      - name: flight_id
+        description: "Unique identifier for the flight."
+        tests:
+          - not_null
+      - name: capture_datetime
+        description: "Timestamp of the recorded flight data."
+        tests:
+          - not_null
+      - name: vertical_rate
+        description: "Rate of altitude change."
+      - name: baro_alt
+        description: "Barometric altitude of the flight."
+      - name: velocity
+        description: "Speed of the aircraft at capture time."
+      - name: time_diff
+        description: "Time difference between consecutive captures."
+      - name: record_count
+        description: "Total number of records for the flight within the time window."
+        tests:
+          - not_null
+          - greater_than:
+              value: 10  # Correct format
