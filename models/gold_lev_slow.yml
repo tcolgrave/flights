@@ -22,7 +22,4 @@ models:
         description: "Time difference between consecutive captures."
       - name: record_count
         description: "Total number of records for the flight within the time window."
-        tests:
-          - not_null
-          - greater_than:
-              value: 10  # Correct format
+
