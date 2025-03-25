@@ -1,7 +1,7 @@
 {{ config(materialized='table') }}  -- Place this line at the very top of your SQL file
 
 WITH cleaned_data AS (
-    SELECT * FROM {{ ref('parto_clean') }}
+    SELECT * FROM {{ ref('bronze_parto_clean') }}
 )
 SELECT
     flight_id,
@@ -12,6 +12,6 @@ SELECT
     velocity,
     baro_altitude,
     vertical_rate,
-    'Fast' AS flight_speed
+    'Level' AS flight_status
 FROM cleaned_data
-WHERE velocity > 250
+WHERE ABS(vertical_rate) <= 5  -- Adjust threshold as needed

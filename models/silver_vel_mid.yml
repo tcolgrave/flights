@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: vel_mid
+  - name: silver_vel_mid
     description: "This model filters cleaned flight data to identify flights that are classed as slow moving."
     materialized: table        
     columns:

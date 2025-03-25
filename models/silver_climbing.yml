@@ -1,9 +1,9 @@
 version: 2
 
 models:
-  - name: descending
-    description: "This model filters cleaned flight data to identify flights that are currently descending."
-    materialized: table        
+  - name: silver_climbing
+    description: "This model filters cleaned flight data to identify flights that are currently climbing."
+    materialized: table      
     columns:
       - name: flight_id
         description: "The unique identifier for the flight."
@@ -20,4 +20,4 @@ models:
       - name: vertical_rate
         description: "The rate of climb or descent of the aircraft."
       - name: flight_status
-        description: "Status indicating the aircraft is descending."
+        description: "Status indicating the aircraft is climbing."

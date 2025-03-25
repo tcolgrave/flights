@@ -8,12 +8,12 @@ WITH time_diff_cte AS (
          c.baro_altitude,
          COALESCE(s.velocity, m.velocity, f.velocity) AS velocity,
          MAX(c.capture_datetime) OVER (PARTITION BY c.flight_id) - MIN(c.capture_datetime) OVER (PARTITION BY c.flight_id) AS time_diff_for_count
-    FROM {{ ref('climbing') }} c
-    LEFT OUTER JOIN {{ ref('vel_slow') }} s 
+    FROM {{ ref('silver_climbing') }} c
+    LEFT OUTER JOIN {{ ref('silver_vel_slow') }} s 
         ON c.flight_id = s.flight_id AND c.capture_datetime = s.capture_datetime
-    LEFT OUTER JOIN {{ ref('vel_mid') }} m 
+    LEFT OUTER JOIN {{ ref('silver_vel_mid') }} m 
         ON c.flight_id = m.flight_id AND c.capture_datetime = m.capture_datetime
-    LEFT OUTER JOIN {{ ref('vel_fast') }} f 
+    LEFT OUTER JOIN {{ ref('silver_vel_fast') }} f 
         ON c.flight_id = f.flight_id AND c.capture_datetime = f.capture_datetime
     WHERE c.capture_datetime > '2025-03-04 14:12'
 )

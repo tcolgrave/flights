@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: parto_clean
+  - name: bronze_parto_clean
     description: "Cleans and transforms raw flight data from flights_source.raw_flights."
     columns:
       - name: capture_datetime

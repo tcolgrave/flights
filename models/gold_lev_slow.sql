@@ -8,8 +8,8 @@ WITH time_diff_cte AS (
          l.baro_altitude,
          s.velocity,
          MAX(l.capture_datetime) OVER (PARTITION BY l.flight_id) - MIN(l.capture_datetime) OVER (PARTITION BY l.flight_id) AS time_diff_for_count
-    FROM {{ ref('level') }} l
-    LEFT OUTER JOIN {{ ref('vel_slow') }} s 
+    FROM {{ ref('silver_level') }} l
+    LEFT OUTER JOIN {{ ref('silver_vel_slow') }} s 
         ON l.flight_id = s.flight_id AND l.capture_datetime = s.capture_datetime
     WHERE l.capture_datetime > '2025-03-04 14:12'
 )
