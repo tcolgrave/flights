@@ -7,7 +7,7 @@ WITH flight_data AS (
         p.velocity,
         COUNT(*) OVER (PARTITION BY p.flight_id) AS record_count,
         LAG(p.capture_datetime) OVER (PARTITION BY p.flight_id ORDER BY p.capture_datetime) AS prev_capture_time
-    FROM {{ ref('parto_clean') }} p
+    FROM {{ ref('silver_minmax_grouped') }} p
 ), 
 grouped_flights AS (
     SELECT 

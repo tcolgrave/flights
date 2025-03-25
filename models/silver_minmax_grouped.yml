@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: silver_minmax_grouped
+    description: "This model filters flight data to include only records where barometric altitude is greater than or equal to 500 and velocity is greater than or equal to 50. This prepares the data for further processing in the gold layer."
+    columns:
+      - name: flight_id
+        description: "Unique identifier for the flight."
+        tests:
+          - not_null
+
+      - name: capture_datetime
+        description: "Timestamp of when the flight data was recorded."
+        tests:
+          - not_null
+
+      - name: baro_altitude
+        description: "The barometric altitude recorded during the flight."
+        tests:
+          - not_null
+
+      - name: velocity
+        description: "The velocity of the flight at the time of data capture."
+        tests:
+          - not_null
+
+    config:
+      materialized: table
