@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: gold_minmax_grouped
+    description: "This model aggregates flight data, splitting it into distinct groups based on capture time. It provides summary statistics for each group, including the min/max values for barometric altitude and velocity, as well as the time range for each group."
+    columns:
+      - name: flight_id
+        description: "Unique identifier for an aircraft. Is consistent day to day"
+        tests:
+          - not_null
+          - unique
+
+      - name: min_time
+        description: "The earliest timestamp in the flight data group, formatted as MM/DD HH24:MI:SS."
+        tests:
+          - not_null
+
+      - name: max_time
+        description: "The latest timestamp in the flight data group, formatted as MM/DD HH24:MI:SS."
+        tests:
+          - not_null
+
+      - name: min_baro_alt
+        description: "The minimum barometric altitude recorded within the flight data group."
+        tests:
+          - not_null
+
+      - name: max_baro_alt
+        description: "The maximum barometric altitude recorded within the flight data group."
+        tests:
+          - not_null
+
+      - name: min_velocity
+        description: "The minimum velocity recorded within the flight data group."
+        tests:
+          - not_null
+
+      - name: max_velocity
+        description: "The maximum velocity recorded within the flight data group."
+        tests:
+          - not_null
+
+      - name: record_count
+        description: "The total number of records in the flight data group."
+        tests:
+          - not_null
+
+      - name: group_id
+        description: "A unique identifier for each group of flight data captured."
+        tests:
+          - not_null
+
+    config:
+      materialized: table
