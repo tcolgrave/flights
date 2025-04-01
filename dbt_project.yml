@@ -24,16 +24,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   flights:  
     +materialized: table  # Default materialization  
-    clean_flights:
-      enabled: false  # Disable this model  
     
     # Pre-hook: Log the row count before execution
-    +pre-hook: 
-      - "INSERT INTO dbt_row_count_log (run_id, table_name, before_count) 
-         SELECT '{{ invocation_id }}', '{{ this.name }}', COUNT(*) FROM {{ this }}"
+    +pre-hook:
+      - |
+        INSERT INTO dbt_row_count_log (run_id, table_name, before_count) 
+        SELECT '{{ invocation_id }}', '{{ this.name }}', COUNT(*) 
+        FROM {{ this }}
 
     # Post-hook: Log the row count after execution
     +post-hook:
-      - "UPDATE dbt_row_count_log 
-         SET after_count = (SELECT COUNT(*) FROM {{ this }}) 
-         WHERE run_id = '{{ invocation_id }}' AND table_name = '{{ this.name }}'"
+      - |
+        UPDATE dbt_row_count_log 
+        SET after_count = (SELECT COUNT(*) FROM {{ this }}) 
+        WHERE run_id = '{{ invocation_id }}' 
+        AND table_name = '{{ this.name }}'
